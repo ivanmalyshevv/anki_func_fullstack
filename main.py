@@ -39,7 +39,7 @@ def load_words(filename):
 
 def print_statistics(score, total_time):
     """
-    Выводит итоговую статистику: счёт, общее и среднее время.
+    Выводит итоговую статистику: счет, общее и среднее время.
 
     Args:
         score (int): Количество правильных ответов.
@@ -47,10 +47,10 @@ def print_statistics(score, total_time):
     """
     if score > 0:
         avg_time = total_time / score
-        print(f'Ваш итоговый счёт: {score}')
+        print(f'Ваш итоговый счет: {score}')
         print(f'Время игры: {total_time:.2f} секунд (среднее время: {avg_time:.2f} сек.)')
     else:
-        print('Ваш итоговый счёт: 0')
+        print('Ваш итоговый счет: 0')
         print('Время игры: 0.00 секунд (среднее время: —)')
 
 
