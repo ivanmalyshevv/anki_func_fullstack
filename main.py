@@ -101,7 +101,9 @@ def start_game(words):
         if is_correct:
             score += 1
             total_time += answer_time
-            print(f'Верно! Время на ответ: {answer_time:.2f} секунд')
+            print(
+                f'Верно! Время на ответ: {answer_time:.2f} секунд'
+            )
         else:
             print(
                 f'Неправильно, правильный ответ: {correct} '
@@ -138,7 +140,9 @@ def train_until_mistake(words):
                 f'(ответ за {answer_time:.2f} секунд)'
             )
         else:
-            print(f'Ошибка! Неверно. Правильный ответ: {correct}')
+            print(
+                f'Ошибка! Неверно. Правильный ответ: {correct}'
+            )
             break
     print_statistics(score, total_time)
 
@@ -224,3 +228,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
