@@ -24,14 +24,15 @@ def load_words(filename):
                 line = line.strip()
                 if not line:
                     continue
+                # Игнорировать строки с лишними запятыми
+                if line.count(',') != 1:
+                    continue
                 parts = line.split(',', 1)
-                if len(parts) == 2:
-                    word = parts[0].strip()
-                    translation = parts[1].strip()
-                    words[word] = translation
+                word = parts[0].strip()
+                translation = parts[1].strip()
+                words[word] = translation
         return words
     except FileNotFoundError:
-
         print(f'Ошибка: файл {filename} не найден.')
         sys.exit(1)
 
@@ -100,9 +101,9 @@ def start_game(words):
         if need_exit:
             print('Спасибо за игру!')
             break
+        total_time += answer_time
         if is_correct:
             score += 1
-            total_time += answer_time
             print(
                 f'Верно! Время на ответ: {answer_time:.2f} секунд'
             )
@@ -135,9 +136,9 @@ def train_until_mistake(words):
         if need_exit:
             print('Выход из режима по запросу пользователя.')
             break
+        total_time += answer_time
         if is_correct:
             score += 1
-            total_time += answer_time
             print(
                 f'Верно! Всего очков: {score} '
                 f'(ответ за {answer_time:.2f} секунд)'
