@@ -1,7 +1,7 @@
+
 import random
 import sys
 import time
-from typing import Dict, Tuple
 
 
 STOP_WORD = 'СТОП'
@@ -19,6 +19,7 @@ def load_words(filename):
 
     Если файл не найден — выводит сообщение об ошибке и завершает выполнение программы с кодом 1.
     """
+
     words = {}
     try:
         with open(filename, encoding='utf-8') as f:
@@ -28,7 +29,8 @@ def load_words(filename):
                     continue
                 parts = line.split(',', 1)
                 if len(parts) == 2:
-                    word, translation = parts[0].strip(), parts[1].strip()
+                    word = parts[0].strip()
+                    translation = parts[1].strip()
                     words[word] = translation
         return words
     except FileNotFoundError:
@@ -48,7 +50,10 @@ def print_statistics(score, total_time):
     if score > 0:
         avg_time = total_time / score
         print(f'Ваш итоговый счет: {score}')
-        print(f'Время игры: {total_time:.2f} секунд (среднее время: {avg_time:.2f} сек.)')
+        print(
+            f'Время игры: {total_time:.2f} секунд '
+            f'(среднее время: {avg_time:.2f} сек.)'
+        )
     else:
         print('Ваш итоговый счет: 0')
         print('Время игры: 0.00 секунд (среднее время: —)')
@@ -101,7 +106,10 @@ def start_game(words):
             total_time += answer_time
             print(f'Верно! Время на ответ: {answer_time:.2f} секунд')
         else:
-            print(f'Неправильно, правильный ответ: {correct} (Время на ответ: {answer_time:.2f} секунд)')
+            print(
+                f'Неправильно, правильный ответ: {correct} '
+                f'(Время на ответ: {answer_time:.2f} секунд)'
+            )
     print_statistics(score, total_time)
 
 
@@ -128,7 +136,10 @@ def train_until_mistake(words):
         if is_correct:
             score += 1
             total_time += answer_time
-            print(f'Верно! Всего очков: {score} (ответ за {answer_time:.2f} секунд)')
+            print(
+                f'Верно! Всего очков: {score} '
+                f'(ответ за {answer_time:.2f} секунд)'
+            )
         else:
             print(f'Ошибка! Неверно. Правильный ответ: {correct}')
             break
@@ -160,7 +171,9 @@ def show_all_words(words):
     Args:
         words (Dict[str, str]): Словарь слов.
     """
-    output = '; '.join(f'{word} - {translation}' for word, translation in words.items())
+    output = '; '.join(
+        f'{word} - {translation}' for word, translation in words.items()
+    )
     print(output)
 
 
@@ -181,17 +194,21 @@ def save_words(words, filename):
 
 
 def main():
+    """
+    Основной цикл работы программы-тренажёра для изучения слов.
+    """
     FILENAME = 'words.txt'
     words = load_words(FILENAME)
     print(f'Было загружено {len(words)} слов из файла {FILENAME}')
     while True:
-        menu = '''Меню:
-        1. Начать игру
-        2. Добавить слова
-        3. Тренировка до первой ошибки
-        4. Вывод всех слов
-        5. Выход
-        '''
+        menu = (
+            'Меню:\n'
+            '    1. Начать игру\n'
+            '    2. Добавить слова\n'
+            '    3. Тренировка до первой ошибки\n'
+            '    4. Вывод всех слов\n'
+            '    5. Выход\n'
+        )
         print(menu)
         menu_choice = input('Пункт меню: ')
         if menu_choice == '1':
@@ -207,6 +224,7 @@ def main():
             sys.exit()
         else:
             print('Неизвестный пункт меню')
+
 
 
 if __name__ == '__main__':
