@@ -10,16 +10,12 @@ STOP_WORD = 'СТОП'
 def load_words(filename):
     """
     Загружает пары 'слово, перевод' из текстового файла и формирует словарь.
-
     Args:
         filename (str): Имя файла для загрузки данных.
-
     Returns:
         Dict[str, str]: Словарь, где ключ — исходное слово, значение — перевод.
-
     Если файл не найден — выводит сообщение об ошибке и завершает выполнение программы с кодом 1.
     """
-
     words = {}
     try:
         with open(filename, encoding='utf-8') as f:
@@ -34,9 +30,9 @@ def load_words(filename):
                     words[word] = translation
         return words
     except FileNotFoundError:
+
         print(f'Ошибка: файл {filename} не найден.')
         sys.exit(1)
-    
 
 
 def print_statistics(score, total_time):
@@ -224,8 +220,6 @@ def main():
             sys.exit()
         else:
             print('Неизвестный пункт меню')
-
-
 
 if __name__ == '__main__':
     main()
