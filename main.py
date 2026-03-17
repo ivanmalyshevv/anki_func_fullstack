@@ -202,9 +202,8 @@ def main():
     """
     Основной цикл работы программы-тренажёра для изучения слов.
     """
-    FILENAME = 'words.txt'
-    words = load_words(FILENAME)
-    print(f'Было загружено {len(words)} слов из файла {FILENAME}')
+    words = load_words()
+    print(f'Было загружено {len(words)} слов из файла words.txt')
     while True:
         menu = (
             'Меню:\n'
