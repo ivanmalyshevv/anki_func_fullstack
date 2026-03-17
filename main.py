@@ -224,7 +224,7 @@ def main():
         elif menu_choice == '4':
             show_all_words(words)
         elif menu_choice == '5':
-            save_words(words, FILENAME)
+            save_words(words, 'words.txt')
             sys.exit()
         else:
             print('Неизвестный пункт меню')
